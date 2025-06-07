@@ -5,6 +5,8 @@ import customtkinter as ctk
 from tkinter import messagebox
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from tkcalendar import DateEntry
+from tkinter import ttk
 
 
 ctk.set_appearance_mode("System")
@@ -15,7 +17,7 @@ class AttendanceTracker:
         self.root = root
         self.root.title("Attendance Tracker")
         self.root.geometry("1080x720")
-        self.root.iconbitmap("face_expression_smile_sad_emotion_emoticon_icon_262144.ico")
+        self.root.iconbitmap("C:/Users/Tanmay Thakur/Desktop/CS Project/face_expression_smile_sad_emotion_emoticon_icon_262144.ico")
 
         self.attendance_file = "attendance.csv"
         self.attendance = self.load_attendance()
@@ -48,8 +50,14 @@ class AttendanceTracker:
         date_frame.pack(pady=10)
 
         ctk.CTkLabel(date_frame, text="Select Date:").pack(side="left")
-        self.date_entry = ctk.CTkEntry(date_frame)
-        self.date_entry.insert(0, datetime.today().strftime('%Y-%m-%d'))
+
+        style = ttk.Style()
+        style.theme_use('default')
+        style.configure("TCombobox", fieldbackground="white", background="white")
+
+        self.date_entry = DateEntry(date_frame, width=12, background='darkblue',
+                                    foreground='white', borderwidth=2, date_pattern='yyyy-mm-dd')
+        self.date_entry.set_date(datetime.today())
         self.date_entry.pack(side="left", padx=5)
 
         self.attendance_listbox = ctk.CTkScrollableFrame(self.mark_tab, height=400)
