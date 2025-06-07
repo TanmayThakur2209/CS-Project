@@ -17,7 +17,7 @@ class AttendanceTracker:
         self.root = root
         self.root.title("Attendance Tracker")
         self.root.geometry("1080x720")
-        self.root.iconbitmap("C:/Users/Tanmay Thakur/Desktop/CS Project/face_expression_smile_sad_emotion_emoticon_icon_262144.ico")
+        self.root.iconbitmap("face_expression_smile_sad_emotion_emoticon_icon_262144.ico")
 
         self.attendance_file = "attendance.csv"
         self.attendance = self.load_attendance()
